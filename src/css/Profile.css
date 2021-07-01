@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+.driverprofile{
+    font-family: 'Roboto', sans-serif;
+    padding: 2rem 0;
+}
+.acceptbutton{
+    border-radius: 0.5rem ;
+    border: 0;
+    color: #390999;
+}
+.rejectbutton{
+    border-radius: 0.5rem ;
+    border: 0;
+    color: #390999
+}
+.deletebutton{
+    border-radius: 0.5rem ;
+    border: 0;
+    color: #390999
+}
+.deletebutton:hover{
+    background-color: #c80000;
+    color: white;
+}
+.editbutton{
+    border-radius: 0.5rem ;
+    border: 0;
+    color: #390999
+}
+.editbutton:hover{
+    background-color: #f0ba0b;
+    color: white;
+}
+.acceptbutton:hover{
+    background-color: #00ac72;
+    color: white;
+}
+.rejectbutton:hover{
+    background-color: #c80000;
+    color: white;
+}
+.submitbutton{
+    border-radius: 0.5rem ;
+    border: 0;
+    color: #390999;
+    margin: 0.5rem 3rem 0 0;
+}
+.addbutton{
+    border-radius: 0.5rem ;
+    border: 0;
+    color: #390999;
+}
+.addbutton:hover{
+    background-color: #39b1cf;
+    color: white;
+}
+.submitbutton:hover{
+    background-color: #00ac72;
+    color: white;
+}
+.driverlist{
+    text-align: center;
+    max-height: 700px;
+    overflow-y: auto;
+    background-color: #ffffff;
+}
+
+.miniaccount{
+    text-align: center;
+    background-color: #fefefe;
+    align-items: center;
+}
+.reqdriver{
+    text-align: center;
+    max-height: 700px;
+    overflow-y: auto;
+    background-color: #ffffff;
+}
+.miniform{
+    padding: 1rem 1rem;
+}
+.profilecoumn{
+    border-radius: 1rem;
+    background-color:#feffff;;
+    border: 0.5px solid grey;
+    padding: 0.5rem 0.5rem;
+}
+.formgroup{
+    margin: 0.2rem 0;
+}
+
+
+/* #a116ef, #390999 */
