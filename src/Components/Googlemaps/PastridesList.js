@@ -11,16 +11,15 @@ import PastRideMap from "./GoogleMap";
 import axios from "axios";
 import MaterialTable from "material-table";
 import FilterListIcon from "@material-ui/icons/FilterList";
-import {
-  Container,
-  Row,
-  Col,
-} from "reactstrap";
+import { Container, Row, Col } from "reactstrap";
 import useWindowDimensions from "./getWindowDimensions";
-import "./Ridesdetail.css"
+import "./Ridesdetail.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import CustomDatePicker from "./CustomDatePicker";
-const PastRides = () => {
+import Fab from "@material-ui/core/Fab";
+import ListIcon from "@material-ui/icons/List";
+
+const Activerideslist = () => {
   const { height, width } = useWindowDimensions();
   const [cardOpen, setCardOpen] = useState(false);
   const [rides, setRides] = useState([]);
@@ -39,7 +38,6 @@ const PastRides = () => {
       .then((res) => {
         const data = res.data;
         const arr = data.map((data) => {
-          
           return {
             name: data ? data["name"] : "Not Available",
             age: data ? data.age : "Not Available",
@@ -80,11 +78,13 @@ const PastRides = () => {
 
   const columns = [
     { field: "name", title: "Name" },
-    { field: "case", title: "Case" },  
-    { field: "date", title: "Date", type: "date",
-      filterComponent: (props) => <CustomDatePicker {...props} />, },
-    
-  
+    { field: "case", title: "Case" },
+    {
+      field: "date",
+      title: "Date",
+      type: "date",
+      filterComponent: (props) => <CustomDatePicker {...props} />,
+    },
   ];
   const rows = rides.map((ride) => {
     return {
@@ -111,7 +111,6 @@ const PastRides = () => {
   });
 
   const showRideDetail = (event, rowData) => {
-   
     setRideDetail(rowData);
     setCardOpen(true);
     setTableOpen(false);
@@ -172,7 +171,6 @@ const PastRides = () => {
     ) : null;
   let tableStyle = {
     transform: "translateX(-444px)",
-    
   };
   if (tableOpen) {
     tableStyle = {
@@ -181,15 +179,26 @@ const PastRides = () => {
   }
   return (
     <main>
-      <Icon
-        style={{ zIndex: 10, position: "absolute", color: "black" }}
-        glyph="youtube-fill"
-        size={58}
+      <Fab
+        style={{
+          zIndex: 10,
+          position: "absolute",
+          borderRadius: "0px 30px 30px 0px",
+          color: "white",
+          backgroundColor: "black",
+        }}
+        variant="extended"
+        color="primary"
+        aria-label="list"
         onClick={() => setTableOpen(!tableOpen)}
-      />
+      >
+        <ListIcon />
+           Past Rides
+      </Fab>
 
       <div style={tableStyle}>
         <MaterialTable
+          className="ridedetailbox"
           columns={columns}
           data={rows}
           icons={{
@@ -201,7 +210,7 @@ const PastRides = () => {
             SortArrow: ArrowUpwardIcon,
           }}
           style={{
-            width: "330px",
+            width: window.screen.width > 800 ? "460px" : "330px",
             position: "absolute",
             zIndex: 10,
             marginLeft: "7px",
@@ -220,23 +229,21 @@ const PastRides = () => {
         />
 
         <Icon
-    
           style={{
             borderRadius: "0",
             position: "absolute",
-            left: "310px",
-          
+            left: window.screen.width > 800 ? "430px" : "300px",
+            color: "red",
             zIndex: "10",
             tableStyle,
           }}
           glyph="view-close-small"
-          size={28}
+          size={32}
           onClick={() => setTableOpen(false)}
         />
       </div>
       <PastRideMap
-        rideid={rideDetail.rideid}
-       
+        
         polyline={rideDetail.polyline} //patient polyline
         pickupcoordinates={rideDetail.pickupcoordinates}
         hospitalcoordinates={rideDetail.hospitalcoordinates}
@@ -247,4 +254,4 @@ const PastRides = () => {
     </main>
   );
 };
-export default PastRides;
+export default Activerideslist;

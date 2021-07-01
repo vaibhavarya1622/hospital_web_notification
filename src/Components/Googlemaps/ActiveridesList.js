@@ -16,6 +16,9 @@ import useWindowDimensions from "./getWindowDimensions";
 import "./Ridesdetail.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import CustomDatePicker from "./CustomDatePicker";
+import Fab from "@material-ui/core/Fab";
+import ListIcon from "@material-ui/icons/List";
+
 const Activerideslist = () => {
   const { height, width } = useWindowDimensions();
   const [cardOpen, setCardOpen] = useState(false);
@@ -175,19 +178,27 @@ const Activerideslist = () => {
   if (tableOpen) {
     tableStyle = {
       transition: "transform 0.2s cubic-bezier(0, 0, 0.8, 1) 0ms",
+      
+      
     };
   }
   return (
     <main>
-      <Icon
-        style={{ zIndex: 10, position: "absolute", color: "black" }}
-        glyph="youtube-fill"
-        size={58}
+      
+      <Fab
+        style={{ zIndex: 10, position: "absolute",borderRadius:"0px 30px 30px 0px",color:'white',backgroundColor:"black" }}
+        variant="extended"
+        color="primary"
+        aria-label="list"
         onClick={() => setTableOpen(!tableOpen)}
-      />
+      >
+        <ListIcon />
+          Active Rides
+      </Fab>
 
       <div style={tableStyle}>
         <MaterialTable
+          className="ridedetailbox"
           columns={columns}
           data={rows}
           icons={{
@@ -199,7 +210,7 @@ const Activerideslist = () => {
             SortArrow: ArrowUpwardIcon,
           }}
           style={{
-            width: "330px",
+            width: window.screen.width > 800 ? "460px" : "330px",
             position: "absolute",
             zIndex: 10,
             marginLeft: "7px",
@@ -213,7 +224,7 @@ const Activerideslist = () => {
             toolbar: false,
             pageSizeOptions: false,
             paginationType: "stepped",
-            pageSize: 5
+            pageSize: 5,
           }}
         />
 
@@ -221,13 +232,13 @@ const Activerideslist = () => {
           style={{
             borderRadius: "0",
             position: "absolute",
-            left: "310px",
-
+            left: window.screen.width > 800 ? "430px" : "300px",
+             color:"red",
             zIndex: "10",
             tableStyle,
           }}
           glyph="view-close-small"
-          size={28}
+          size={32}
           onClick={() => setTableOpen(false)}
         />
       </div>
