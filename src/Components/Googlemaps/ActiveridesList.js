@@ -66,7 +66,7 @@ const Activerideslist = () => {
               : "Not Available",
           };
         });
-
+        
         setRides(arr);
       })
       .catch((err) => {
