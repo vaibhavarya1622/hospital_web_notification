@@ -70,14 +70,14 @@ function Navbar({ location }) {
             <Link to="/pastride">PastRide</Link>
           ) : (
             <Link style={{ visibility: "hidden" }} to="/pastride">
-              Pastrde
+              Pastride
             </Link>
           )}
 
           {localStorage.getItem("token") !== null ? (
             <Link to="/profile">Profile</Link>
           ) : (
-            <Link  to="/home">
+            <Link  to="/login">
               Login
             </Link>
           )}

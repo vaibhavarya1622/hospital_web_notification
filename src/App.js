@@ -50,14 +50,26 @@ const App = () => {
             component={Profile}
             meta={{ auth: true }}
           />
-          <Route exact path="/login">
-            <Login />
-          </Route>
-          <Route exact path="/signup">
-            <Signup />
-          </Route>
+          {localStorage.getItem("token") == null ? (
+            <Route exact path="/login">
+              <Login />
+            </Route>
+          ) : (
+            <Route exact path="/#">
+              <Login />
+            </Route>
+          )}
+          {localStorage.getItem("token") == null ? (
+            <Route exact path="/signup">
+              <Signup />
+            </Route>
+          ) : (
+            <Route exact path="/#">
+              <Signup />
+            </Route>
+          )}
 
-          <Redirect to="/login" />
+          <Redirect to="/home" />
         </Switch>
       </GuardProvider>
       <Footer />
