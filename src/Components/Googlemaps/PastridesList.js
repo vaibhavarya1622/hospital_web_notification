@@ -18,6 +18,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import CustomDatePicker from "./CustomDatePicker";
 import Fab from "@material-ui/core/Fab";
 import ListIcon from "@material-ui/icons/List";
+import HighlightOffRoundedIcon from "@material-ui/icons/HighlightOffRounded";
 
 const Activerideslist = () => {
   const { height, width } = useWindowDimensions();
@@ -123,7 +124,7 @@ const Activerideslist = () => {
       <div className="carddetails">
         <div className="card-header">
           <h2> Ride details :</h2>
-          <Icon glyph="view-close-small" size={38} onClick={hideRideDetail} />
+          <HighlightOffRoundedIcon onClick={hideRideDetail} />
         </div>
         <div className="card-body">
           <Container>
@@ -228,7 +229,7 @@ const Activerideslist = () => {
           }}
         />
 
-        <Icon
+        <HighlightOffRoundedIcon
           style={{
             borderRadius: "0",
             position: "absolute",
@@ -237,8 +238,7 @@ const Activerideslist = () => {
             zIndex: "10",
             tableStyle,
           }}
-          glyph="view-close-small"
-          size={32}
+          
           onClick={() => setTableOpen(false)}
         />
       </div>
