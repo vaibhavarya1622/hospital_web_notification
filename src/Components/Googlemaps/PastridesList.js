@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Icon from "supercons";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import FirstPageIcon from "@material-ui/icons/FirstPage";
 import LastPageIcon from "@material-ui/icons/LastPage";
