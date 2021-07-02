@@ -7,17 +7,9 @@ import MenuIcon from "@material-ui/icons/Menu";
 import ClearIcon from "@material-ui/icons/Clear";
 import { ToastContainer} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Headersignup from "./Headersignup"
 function Navbar({ location }) {
   const [icons, seticons] = useState(false);
   const [classna, setclassna] = useState("slider");
-  if (localStorage.getItem("token") == null) {
-    return (
-      <>
-        <Headersignup location="login" />
-      </>
-    );
-  }
   return (
     <>
       <ToastContainer
@@ -59,18 +51,52 @@ function Navbar({ location }) {
           )}
         </div>
         <nav className={classna}>
-          <Link to="/home">Home</Link>
-          <Link to="/track">TrackAmbulance</Link>
-          <Link to="/pastride">PastRide</Link>
-          <Link to="/profile">Profile</Link>
-          <Link to="/login" onClick={() => {
-              localStorage.removeItem("token");
-              window.location.reload();
-            }}
-            style={{ cursor: "pointer", color: "white" }}
-          >
-            Logout
-          </Link>
+          {localStorage.getItem("token") !== null ? (
+            <Link to="/home">Home</Link>
+          ) : (
+            <Link style={{ visibility: "hidden" }} to="/home">
+              Home
+            </Link>
+          )}
+
+          {localStorage.getItem("token") !== null ? (
+            <Link to="/track">TrackAmbulance</Link>
+          ) : (
+            <Link style={{ visibility: "hidden" }} to="/track">
+              TrackAmbulance
+            </Link>
+          )}
+          {localStorage.getItem("token") !== null ? (
+            <Link to="/pastride">PastRide</Link>
+          ) : (
+            <Link style={{ visibility: "hidden" }} to="/pastride">
+              Pastrde
+            </Link>
+          )}
+
+          {localStorage.getItem("token") !== null ? (
+            <Link to="/profile">Profile</Link>
+          ) : (
+            <Link  to="/home">
+              Login
+            </Link>
+          )}
+
+          {localStorage.getItem("token") !== null ? (
+            <Link
+              to="/login"
+              onClick={() => {
+                localStorage.removeItem("token");
+                window.location.reload();
+              }}
+              style={{ cursor: "pointer", color: "white" }}
+            >
+              Logout
+            </Link>
+          ) : (
+            <Link to="/signup">Signup</Link>
+          )}
+
           {location === "home" && <div className="animation start-home" />}
           {location === "track" && <div className="animation start-user" />}
           {location === "pastride" && (

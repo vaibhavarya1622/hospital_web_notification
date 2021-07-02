@@ -1,5 +1,5 @@
 import React from 'react'
-import Header from "../Components/Myheader/Headersignup"
+import Header from "../Components/Myheader/Header.js"
 import Whychooseus from "../Components/Whychooseus"
 const Signup = () => {
   return (
