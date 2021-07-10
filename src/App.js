@@ -9,6 +9,7 @@ import Profile from "./Screens/Profile";
 import Login from "../src/Screens/Login";
 import { GuardProvider, GuardedRoute } from "react-router-guards";
 import Signup from "./Screens/Signup"
+import Notification from './Components/Notification/Notification'
 const requireLogin = (to, from, next) => {
   if (to.meta.auth) {
     if (localStorage.getItem("token") != null) {
@@ -68,7 +69,9 @@ const App = () => {
               <Signup />
             </Route>
           )}
-
+          <Route exact path='/notify'>
+            <Notification />
+          </Route>
           <Redirect to="/home" />
         </Switch>
       </GuardProvider>

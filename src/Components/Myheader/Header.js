@@ -7,6 +7,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import ClearIcon from "@material-ui/icons/Clear";
 import { ToastContainer} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Notifications from './../Notification/Notification.js'
 function Navbar({ location }) {
   const [icons, seticons] = useState(false);
   const [classna, setclassna] = useState("slider");
@@ -110,6 +111,7 @@ function Navbar({ location }) {
           )}
         </nav>
         <div className="clearfix"></div>
+      {localStorage.getItem('token')!==null && <Notifications />}
       </div>
     </>
   );
